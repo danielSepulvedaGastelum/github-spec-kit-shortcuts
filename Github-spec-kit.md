@@ -1,23 +1,39 @@
-======================================================================Buscar en Google el repositorio de GitHub Spec kit
+# Gúia de Shorcuts y manual para el uso de GitHub Speckit
+---
+
+# INSTALACIÓN
+
+1. Buscar en Google el repositorio de GitHub Spec kit
+```text
 https://github.com/github/spec-kit
+```
 
-======================================================================En los pasos de instalación debemos tener primero instalado en linea de comandos uv, ir a esa pagina
-https://github.com/github/spec-kit/blob/main/docs/install/uv.md
+2. En los pasos de instalación debemos tener primero instalado en linea de comandos uv, ir a esa pagina
+ ```text
+ https://github.com/github/spec-kit/blob/main/docs/install/uv.md
+ ```
 
-======================================================================instalar uv desde windows
+3. instalar uv desde windows
+```text
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
-======================================================================Ahora instalar Github-speckit con este comando, cambiando el X.Y.Z por la versión mas actual en el repositorio
+4. Ahora instalar Github-speckit con este comando, cambiando el X.Y.Z por la versión mas actual en el repositorio
+```text
 xuv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
+```
 
-====================================================================== para verificar que se haya instalado bien
+5. para verificar que se haya instalado bien ejecutar comando
+```sh
 specify 
+```
 
-======================================================================Para ver los comandos disponibles
+6. Para ver los comandos disponibles
+```sh
 specify --help
+```
 
-
-                                                                                                                                                                                                                                                                                                                                            
+```sh
 ╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ --version  -V        Show version and exit.                                                                                                                                                                                                                                                                                                    │
 │ --help               Show this message and exit.                                                                                                                                                                                                                                                                                               │
@@ -34,32 +50,42 @@ specify --help
 │ bundle       Discover, install, and author Spec Kit bundles                                                                                                                                                                                                                                                                                    │
 │ workflow     Manage and run automation workflows                                                                                                                                                                                                                                                                                               │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
-======================================================================Crear una carpeta del proyecto e ir a esa carpeta
-/c/Desarrollo/curso-sdd/tema1
 
-======================================================================iniciar el proyecto con lo siguiente
+7. Crear una carpeta del proyecto e ir a esa carpeta
+```sh
+mkdir tema1
+cd  /c/Desarrollo/curso-sdd/tema1
+```
+
+8. iniciar el proyecto con lo siguiente
+```sh
 specify init proyecto1 --integration codex
-
-specify init 	- para iniciar proyecto
-proyecto1 	- Nombre del proyecto
---integration	- para especificar que se integre con un agente de IA
-codex		- Es el agente que se va a utilizar
-
-
-======================================================================4 Capas del procesos de una Spec
-1.Constitución: Los principios que no se van a negociar
-2.Especificación: El Qué y el Por qué
-3.Plan: es el Cómo
-4.Tareas: que es lo que tenemos que hacer paso a paso
+```
+- specify init 	- para iniciar proyecto
+- proyecto1 	- Nombre del proyecto
+- --integration	- para especificar que se integre con un agente de IA
+- codex		- Es el agente que se va a utilizar
 
 
-============================================================================================================================================
-====================================================================== 1. Constitución
-============================================================================================================================================
+9. Son 4 Capas del procesos de una Spec:
 
-======================================================================$speckit-constitution
+    1. Constitución: Los principios que no se van a negociar
+    2. Especificación: El Qué y el Por qué
+    3. Plan: es el Cómo
+    4. Tareas: que es lo que tenemos que hacer paso a paso
 
+
+---
+---
+---
+# PROCESOS DE LA SPEC
+## 1. Constitución
+
+-Skill de speckit-constitution, ejemplo del prompt para iniciar una contitución
+
+```sh
 $speckit-constitution
 
 Crea los pirncipios que gobiernan PresupuestosPro, una herramienta web para que freelancers generen presupuestos en PDF. Principios:
@@ -70,8 +96,10 @@ Crea los pirncipios que gobiernan PresupuestosPro, una herramienta web para que 
 4. Verificable por una persona no técnica: cada criterio de éxito debe poder comprobarse usando la app, sin leer código
 5. Datos del usuario con respeto: pedir solo lo imprescindible. No introducir claves ni secretos en el código
 Mantén la contitución corta y en lenguaje claro
+```
 
-====================================================================== Preguntas que sebemos hacernos al crear la Spect
+- Preguntas que sebemos hacernos al crear la Spect
+
 1.  ¿Se entiende el OBJETIVO sin saber de tecnología? (si tu cuñado no lo pilla, reescríbelo)
 2.  ¿Está claro QUIÉN es el usuario y qué sabe (y qué no sabe) hacer?
 3.  ¿Las reglas de negocio tienen un EJEMPLO concreto con números o casos reales?
@@ -84,12 +112,19 @@ Mantén la contitución corta y en lenguaje claro
 10. ¿Podrías dársela a OTRA persona y que construyera lo mismo que tú tienes en la cabeza?
 
 
-============================================================================================================================================
-====================================================================== 2. Especificación
-============================================================================================================================================
+---
+---
+---
+## 1. Especificación
 
-======================================================================xxxxxxxxxxxxxxxxx
-# Especificación: [NOMBRE DEL PROYECTO] v[N]
+
+La especificación debe contener este formato:
+
+
+> ⚠️ **Importante:** Recuerda no especificar detalles técnicos.
+
+```md
+#Especificación: [NOMBRE DEL PROYECTO] v[N]
 
 ## 1. Objetivo y contexto de negocio
 [¿Qué problema resuelve y por qué importa? ¿Cómo se usa en la vida real?]
@@ -115,17 +150,26 @@ Mantén la contitución corta y en lenguaje claro
 ## 8. Fuera de alcance
 [Lo que esta versión NO hace, dicho explícitamente. La sección que impide que la IA se vaya por las ramas.]
 
-====================================================================== Como realizar esta especificación de forma Detallada:
+```
+---
+---
 
-----------------------------------------------------Sección 1 - Objetivo y contexto de negocio
+Como realizar esta especificación de forma Detallada:
+
+- Sección 1 - Objetivo y contexto de negocio
+```text
 Qué producir: 3–5 frases que respondan a: ¿qué problema resuelve?, ¿por qué importa?, ¿cómo se usa en la vida real? Incluye una escena concreta (el encargo te regala una, úsala o inventa la tuya). Cierra con una medida de éxito: ¿cuánto debería tardar el freelancer en emitir un presupuesto correcto?
 
 Prueba del cuñado: si alguien sin idea de tecnología no entiende esta sección, reescríbela.
+```
 
-----------------------------------------------------Sección 2 - Usuarios
+- Sección 2 - Usuarios
+```text
 Qué producir: al menos dos perfiles. Relee la pista de la plantilla: "¿hay alguien que recibe el resultado sin usar la app?". Uno de tus usuarios no toca la aplicación jamás… y aun así una regla de negocio entera depende de qué tipo de persona es. Descríbelos: quiénes son, qué saben hacer y qué no.
+```
 
-----------------------------------------------------Sección 3 - Escenarios de usuario (historias)
+- Sección 3 - Escenarios de usuario (historias)
+```text
 Qué producir: entre 4 y 6 historias con el formato exacto HUn — Como [usuario], quiero [acción], para [beneficio].
 
 Ejemplo resuelto (puedes usarlo como HU1):
@@ -135,8 +179,10 @@ HU1 - Como freelancer, quiero configurar mi nombre, NIF, contacto y logo, para q
 Cómo sacar el resto: cada cosa que la clienta dice querer hacer en el encargo esconde al menos una historia. Recórrelo párrafo a párrafo.
 
 Cuidado con: historias sin beneficio ("quiero un botón de descargar"). El beneficio es lo que justifica que la historia exista.
+```
 
-----------------------------------------------------Sección 4 - Requisitos funcionales
+- Sección 4 - Requisitos funcionales
+```text
 Qué producir: entre 8 y 12 requisitos numerados (RF1, RF2…), cada uno con un comportamiento observable: algo que se puede ver pasar usando la app.
 
 Calibra con este par:
@@ -146,8 +192,10 @@ Calibra con este par:
 ✅ Bien: "RFx. Cuando el freelancer vuelva a abrir la aplicación, su catálogo y sus presupuestos deben seguir ahí." (Eso es el QUÉ: comportamiento. Cómo se consiga, no es asunto de la spec.)
 
 No te olvides de: los cálculos (base, IVA, retención, total), el tipo de cliente, la numeración, la validez, el contenido del PDF y poder editar líneas antes de generarlo.
+```
 
-----------------------------------------------------Sección 5 - Reglas de negocio (con ejemplos)
+- Sección 5 - Reglas de negocio (con ejemplos)
+```text
 La sección más importante de tu spec.
 
 Qué producir: las reglas fiscales y de numeración del encargo, y debajo un presupuesto de ejemplo completo, con 2 o 3 líneas inventadas por ti (servicios y precios los eliges tú), calculado a mano y al céntimo:
@@ -165,8 +213,10 @@ Además, indica cuánto valdría ese mismo presupuesto (a) con retención del 7 
 Comprobación rápida de que lo has entendido: con una base de 1.000,00 €, el total con IVA 21 % y retención 15 % es 1.060,00 €. Si tu fórmula no da eso, revisa el signo de la retención. (Tu ejemplo debe usar otros números.)
 
 Cuidado con: copiar las reglas sin ejemplo. Una regla sin números no se puede verificar, y lo que no se puede verificar, la IA lo interpretará a su manera.
+```
 
-----------------------------------------------------Sección 6 - Criterios de aceptación
+- Sección 6 - Criterios de aceptación
+```text
 Qué producir: entre 5 y 8 criterios (CA1, CA2…) que cualquiera pueda comprobar usando la app, con respuesta sí/no, sin leer código.
 
 Calibra con este par:
@@ -176,20 +226,25 @@ Calibra con este par:
 ✅ Bien: "CAx. Con el presupuesto de ejemplo de la sección 5 y retención del 15 %, el total mostrado es exactamente [tu cifra] €." (Sí o no. Sin discusión.)
 
 Truco: tus mejores criterios saldrán de cruzar tu ejemplo numérico con las reglas: ¿qué pasa al activar la retención?, ¿y con un cliente particular?, ¿qué número recibe el segundo presupuesto del año?
+```
 
-----------------------------------------------------Sección 7 - Casos límite
+- Sección 7 - Casos límite
+```text
 Qué producir: al menos 3 casos con el formato "¿Qué pasa si…?" y su respuesta, decidida por ti.
 
 Para arrancar, piensa en: un presupuesto sin ninguna línea, un servicio que no está en el catálogo, un cliente particular con la retención marcada por error.
 
 Y aquí, permiso oficial para no ser perfecto: si detectas un caso límite pero no sabes qué respuesta darle, no lo fuerces: pásalo a "Preguntas abiertas". Eso no es un fallo; es el método funcionando.
-
-----------------------------------------------------Sección 8 - Fuera de alcance
+```
+- Sección 8 - Fuera de alcance
+```text
 Qué producir: la lista de exclusiones que la clienta deja caer al final del encargo, dicha de forma explícita, y al menos un punto propio: algo que se te haya ocurrido durante la tarea, que suena a buena idea… y que precisamente por eso hay que dejar fuera de la v0 por escrito.
 
 Recuerda: esta sección es el freno de mano de la IA. Un "fuera de alcance" pobre es la puerta por la que se cuelan las funcionalidades fantasma.
+```
 
-----------------------------------------------------Sección 9 (extra) - Preguntas abiertas
+- Sección 9 (extra) - Preguntas abiertas
+```text
 Añade al final un bloque que no está en la plantilla: "Preguntas abiertas".
 
 Qué producir: entre 3 y 6 preguntas numeradas (PA1, PA2…) con las decisiones que sabes que no has tomado. Recupera los "¿?" que marcaste al leer el encargo y las dudas que hayas ido aparcando por el camino.
@@ -197,14 +252,22 @@ Qué producir: entre 3 y 6 preguntas numeradas (PA1, PA2…) con las decisiones 
 Por dónde suelen ir los huecos de este proyecto (no las respondas aquí, solo comprueba si te las habías planteado): ¿el IVA es fijo o editable?, ¿qué sale en el PDF si no hay logo?, ¿la numeración se puede corregir a mano?, ¿cómo se redondea exactamente?, ¿qué se ve la primera vez que se abre la app?
 
 Por qué importa: estas preguntas son, literalmente, lo que le llevarás a Spec Kit. En la práctica del módulo verás que /speckit-specify y /speckit-clarify te preguntarán cosas muy parecidas.
+```
+---
+---
 
-----------------------------------------------------4. Qué pasa después con tu spec
+> ⚠️ **IMPORTANTANTE:**
+
+-  Qué pasa después con tu spec
 Guárdala bien, porque no es un ejercicio suelto: es la entrada del ciclo. En la práctica guiada del módulo harás dos cosas con ella:
 
 Dársela a Spec Kit con /speckit-specify: la herramienta la leerá, te hará preguntas (muchas te sonarán, porque las tendrás en tu lista de Preguntas abiertas) y de tus respuestas saldrá la especificación definitiva.
 
+---
+---
+### Ejemplo de una SPEC
 
-======================================================================Ejemplo de una Spec
+```md
 # Especificación: PresupuestosPro v0
 
 ## 1. Objetivo y contexto de negocio
@@ -305,48 +368,70 @@ Cosas que sé que no he decidido. No las escondo: las apunto para resolverlas en
 - PA4. **Redondeo:** ¿cómo se redondean exactamente los importes con decimales raros (2,345 €)?
 - PA5. **Primer uso:** ¿qué ve el freelancer la primera vez, con el catálogo vacío y sin perfil?
 - PA6. **Cambio de ordenador:** si los datos viven en este ordenador, ¿qué pasa si uso otro? ¿Lo asumimos y lo decimos claramente?
+```
 
+---
+---
+### Plantilla para ejecutar la Spec
 
-======================================================================Plantilla para ejecutar la Spec
+```sh
 /speckit.specify
 
 [pegar aquí la spec manual]
 
 Antes de redactar la especificación formal, hazme las preguntas que necesites para
 resolver cualquier ambigüedad. No implementes nada todavía.
+```
 
 
+---
+---
+### Validar la Spec con speckit-clarify
 
-======================================================================Validar la Spec con speckit-clarify
+```sh
 /speckit.clarify
+```
 
-Te hará una serie de preguntas de la especificación para aclarar los puntos que considere que deben aclararse
+> 💡 **Nota:** Te hará una serie de preguntas de la especificación para aclarar los puntos que considere que deben aclararse
 
-============================================================================================================================================
-====================================================================== 3. Plan
-============================================================================================================================================
 
-======================================================================speckit Plan
-Speckit Plan
+
+---
+---
+---
+## 3. Plan
+
+Ejemplo de la ejecución de un Plan, aquí es donde se deben de ver los detalles técnicos de la construcción de la APP, no en la SPEC
+
+```sh
+$Speckit Plan
 
 Prioriza la simplicidad por encima de todo, según la constitución. Es una versión 1 que debe poder publicarse online enseguida y funcionar bien en el móvil.  No añadas infraestructura que la spec no necesite (sin cuentas de usuario, sin base de datos en la nube en esta versión). Explica las desiciones importantes en lenguaje de negocio
+```
 
+---
+---
+---
+## 4. Tareas
 
-
-============================================================================================================================================
-====================================================================== 4. Tareas
-============================================================================================================================================
-
-======================================================================$speckit-tasks
+```sh
+$speckit-tasks
+```
 
 Genera todas las tareas que va a realizar el agente al momento de implementar
 
 Divide las tareas en fases e indica son [P] las fases que puedes ser en Paralelo con subagentes
 
-======================================================================$speckit-Analyze
+---
+---
+
+Al concluir con la ejecución de las tareas se puede ejecutar el siguiente comando:
+
+```sh
+$speckit-Analyze
+```
 
 Otra puerta de calidad OPCIONAL para verificar de forma exhaustivo de consistencia y cobertura entre todos los documentos (artefactos), en el siguiente orden
-
 
 1. Spec.md
 2. Plan.md
@@ -355,77 +440,81 @@ Otra puerta de calidad OPCIONAL para verificar de forma exhaustivo de consistenc
 verifica que todo sea cuerente entre si y que respeta el archivo de constitución
 
 
+---
+---
+---
+## 5. Implementación
 
-============================================================================================================================================
-====================================================================== 5. Implementación
-============================================================================================================================================
+```sh
+$Speckit Implement
+```
 
-
-======================================================================Speckit Implement
 Se ejecuta la implementación del proyecto
 
 
+---
+---
+---
+---
+# ITERAR DE NUEVO COSAS QUE NO GUSTARON
 
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== Iterar de nuevo cosas que no gustaron
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
+---
+---
+## 2. Especificación
 
+```sh
+$speckit.specify 
 
-============================================================================================================================================
-====================================================================== 2. Especificación
-============================================================================================================================================
-
-======================================================================speckit.specify
-
-
-/speckit.specify Mejorar la presentación de PresupuestosPro (aplicación ya implementada en la spec 001) con dos cambios, sin alterar ninguna funcionalidad ni dato existente. Primero: añadir una página de inicio (index) que sea el punto de entrada de la aplicación al acceder a la raíz del servidor, con navegación clara hacia las cuatro secciones existentes (Presupuestos, Clientes, Catálogo y Perfil) y un pequeño resumen de actividad (por ejemplo, número de presupuestos por estado). Además, todas las páginas deben compartir una navegación común visible para moverse entre secciones sin usar el botón atrás. Segundo: rediseñar la apariencia visual de toda la aplicación para que resulte profesional y sobria: tipografía consistente, paleta de colores limitada definida en un único lugar, espaciado uniforme, jerarquía visual clara entre títulos, tablas, formularios y totales, y estados visuales distinguibles para los presupuestos (Borrador, Enviado, Aceptado, Rechazado, Caducado). El rediseño debe aplicarse también a la plantilla del PDF para que el documento que recibe el cliente transmita la misma imagen profesional. Debe mantenerse el enfoque mobile-first ya existente y todos los textos en español de España. La lógica de negocio, los cálculos, la API y el esquema de datos no deben cambiar en absoluto.
-
-======================================================================Validar la Spec con speckit-clarify
-/speckit.clarify
-
-Te hará una serie de preguntas de la especificación para aclarar los puntos que considere que deben aclararse
+Mejorar la presentación de PresupuestosPro (aplicación ya implementada en la spec 001) con dos cambios, sin alterar ninguna funcionalidad ni dato existente. Primero: añadir una página de inicio (index) que sea el punto de entrada de la aplicación al acceder a la raíz del servidor, con navegación clara hacia las cuatro secciones existentes (Presupuestos, Clientes, Catálogo y Perfil) y un pequeño resumen de actividad (por ejemplo, número de presupuestos por estado). Además, todas las páginas deben compartir una navegación común visible para moverse entre secciones sin usar el botón atrás. Segundo: rediseñar la apariencia visual de toda la aplicación para que resulte profesional y sobria: tipografía consistente, paleta de colores limitada definida en un único lugar, espaciado uniforme, jerarquía visual clara entre títulos, tablas, formularios y totales, y estados visuales distinguibles para los presupuestos (Borrador, Enviado, Aceptado, Rechazado, Caducado). El rediseño debe aplicarse también a la plantilla del PDF para que el documento que recibe el cliente transmita la misma imagen profesional. Debe mantenerse el enfoque mobile-first ya existente y todos los textos en español de España. La lógica de negocio, los cálculos, la API y el esquema de datos no deben cambiar en absoluto.
+```
 
 
+### Validar la Spec con speckit-clarify
+```sh
+$speckit.clarify
+```
+> 💡 **Nota:** Te hará una serie de preguntas de la especificación para aclarar los puntos que considere que deben aclararse
 
-============================================================================================================================================
-====================================================================== 3. Plan
-============================================================================================================================================
+---
+---
+## 3. Plan
 
-======================================================================speckit Plan
+```sh
+$speckit-plan 
 
-$speckit-plan Esta feature solo cambia la capa de presentación de una aplicación ya implementada. Toma el stack, las convenciones y la estructura de proyecto tal como están definidos en specs/001-presupuestos-profesionales/plan.md y specs/001-presupuestos-profesionales/data-model.md
+Esta feature solo cambia la capa de presentación de una aplicación ya implementada. Toma el stack, las convenciones y la estructura de proyecto tal como están definidos en specs/001-presupuestos-profesionales/plan.md y specs/001-presupuestos-profesionales/data-model.md
+```
 
-
-======================================================================speckit Checklist
+### Checklist
+```sh
 speckit Checklist ux
+```
 
 Para que cree una lista de verificación de la interface ya que en la especificación nueva se indicó que se mejorar la inerface por algo profesional, y eso es muy anbiguo
 
-
-
+```sh
 $speckit-checklist Crea un checklist de UX para el flujo de onboarding.
 Foco en accesibilidad, estados de error y estados de carga.
 Audiencia: revisor de PR.
+```
 
+---
+---
+## 4. Tareas
 
-============================================================================================================================================
-====================================================================== 4. Tareas
-============================================================================================================================================
-
-======================================================================$speckit-tasks
+```sh
+$speckit-tasks
+```
 
 Genera todas las tareas que va a realizar el agente al momento de implementar
 
 Divide las tareas en fases e indica son [P] las fases que puedes ser en Paralelo con subagentes
 
-======================================================================$speckit-Analyze
+```sh
+$speckit-Analyze
+```
 
 Otra puerta de calidad OPCIONAL para verificar de forma exhaustivo de consistencia y cobertura entre todos los documentos (artefactos), en el siguiente orden
-
 
 1. Spec.md
 2. Plan.md
@@ -433,17 +522,15 @@ Otra puerta de calidad OPCIONAL para verificar de forma exhaustivo de consistenc
 
 verifica que todo sea cuerente entre si y que respeta el archivo de constitución
 
+---
+---
+## 5. Implementación
 
+```sh
+Speckit-Implement
+```
 
-============================================================================================================================================
-====================================================================== 5. Implementación
-============================================================================================================================================
-
-
-======================================================================Speckit Implement
-Se ejecuta la implementación del proyecto
-
-
+> 💡 **Nota:** Se ejecuta la implementación del proyecto
 
 
 
@@ -451,41 +538,36 @@ Se ejecuta la implementación del proyecto
 
 
 
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== Ciclo de Iteración
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
+---
+---
+---
+---
+# CICLO DE ITERACIÓN
 
-
-======================================================================quickstart
+- Quickstart
 El quickstart oficial distingue dos caminos. Para experimentos rápidos basta el flujo mínimo: 
 
+```text
 specify → plan → tasks → implement. 
+```
 
 
-
-======================================================================features de producción 
-
+- Features de producción 
 Pero para features de producción o con ambigüedad significativa, /speckit-checklist se trata como un quality gate habitual, junto a clarify y analyze:
 
-
+```text
 constitution → specify → clarify → plan → checklist → tasks → analyze → implement
+```
 
 
 
+---
+---
+---
+---
+# CLAUDE.md o AGENTS.md
 
-
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== CLAUDE.md o AGENTS.md
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-
+```sh
 Crea el archivo CLAUDE.md en la raíz del proyecto: será tu memoria técnica en todas las
 sesiones futuras. Tiene que caber en una pantalla e incluir: (1) qué es esta app en una
 frase; (2) el stack: tecnologías activas y decisiones técnicas vigentes (revisa los
@@ -493,18 +575,19 @@ plan.md de specs/ para extraerlas); (3) cómo se arranca y se prueba en local; (
 convenciones que seguimos; (5) una última línea que diga: "Las reglas de producto viven
 en .specify/memory/constitution.md y el estado del producto en specs/README.md".
 Enséñamelo antes de guardar.
+```
 
 
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== 2. Nueva Especificación
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
 
-====================================================================== Nueva Spec
+---
+---
+---
+---
+# NUEVA ESPECIFICACIÓN
 
+## Nueva Spec
+
+```md
 # Exportar todos mis presupuestos en un .zip
 
 ## Objetivo
@@ -558,143 +641,161 @@ de un "archivo de datos".
 - Copias automáticas o programadas: solo bajo demanda, con su botón.
 - Enviar el zip por email o subirlo a ninguna nube.
 
+```
 
-
-======================================================================$spec specify
-/speckit.specify
+Ejecutar lo anterior en el siguiente comando
+```sh
+$speckit-specify
 
 [pegar aquí la spec manual]
 
 Contexto: esta funcionalidad reutiliza el PDF que ya genera la app. Antes de redactar la especificación formal, hazme las preguntas que necesitas para resolver cualquier 
 ambigüedad. No planifiques ni implementes nada todavia
 
-
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== Agregar GIT al ciclo
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
+```
 
 
-======================================================================En consola de comandos externa (BASH), no en el agente poner el comando
+---
+---
+---
+---
+# AGREGAR GIT AL CICLO
+
+En consola de comandos externa (BASH), no en el agente poner el comando
+
+```sh
 specify extensión add git
 
-======================================================================Agregar ak final del archivo AGENTS.md o CLAUDE.md para forzar la creación de las ramas, ya que suele fallar este paso porque el agente a veces lo hace y aveces no
+```
 
+> ⚠️ **Advertencia:** 
 
+Agregar al final del archivo `AGENTS.md` o `CLAUDE.md` para forzar la creación de las ramas, ya que suele fallar este paso porque el agente a veces lo hace y aveces no
 
+```md
 ## Spec-kit
 
 * Antes de ejecutar el flujo de `/speckit.specify`, SIEMPRE ejecuta primero el hook `before_specify` (skill `speckit-git-feature`) para crear la rama de la feature, y espera su resultado antes de crear la spec.
 * Tras completar `/speckit.specify`, verifica con `git branch --show-current` que estamos en la rama `NNN-nombre-feature` y no en `master`. Si no es así, avísame antes de continuar.
 
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== Agregados para mejorar el ciclo
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
+```
 
 
 
-======================================================================Despues de Ejecutar el Plan, ejecuta este Prompt directo en Codex
 
+
+
+---
+---
+---
+---
+# AGREGADOS PARA MEJORAR EL CICLO
+
+Despues de Ejecutar el Plan, ejecuta este Prompt directo en Codex
+
+```sh
 Incluye en `plan.md`, como último paso de la fase final, un paso de mantenimiento:
 “Actualizar `AGENTS.md` con las decisiones de diseño y convenciones nuevas de esta feature, una línea por decisión, con referencia a la spec (p. ej. ‘[003] ...’). No incluyas entradas por incluir, asegúrate siempre de que es información transversal y relevante para el proyecto que puedan aprovechar futuras features.”
 
-======================================================================AGENTS.md agreg al final de la sección  ## Spec-Kit
+```
+
+`AGENTS.md` agreg al final de la sección  ## Spec-Kit
+
+```md
+
+## Spec-Kit
+.
+.
+.
 
 
 * Al ejecutar `/speckit.plan`, SIEMPRE incluye en `plan.md`, como último paso de la fase final, un paso de mantenimiento: “Actualizar `AGENTS.md` con las decisiones de diseño y convenciones nuevas de esta feature, una línea por decisión, con referencia a la spec (p. ej. ‘[003] ...’). No incluyas entradas por incluir, asegúrate siempre de que es información transversal y relevante para el proyecto que pueden aprovechar futuras features.”
 
-======================================================================AGENTS.md agregar en la parte de Convenciones
+```
+
+
+`AGENTS.md` agregar en la parte de Convenciones
+
+```md
+
+## Convenciones
+.
+.
+.
+
+
 cuando te pida "cerrar la feature", ejecuta:
 verificar working tree limpio y commitear pendientes, correr tests (para si fallan), 
 checkout main, 
 merge --no-ff de la rama de la feature con mensaje "Merge feature NN:<nombre>",
 y moistar git log --oneline -10, cambia en spec.md de esta spec => **Status**: Publicada
+```
 
 
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-====================================================================== Estados de las Spec
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
-===============================================================================================================================================================================================================================
+---
+---
+---
+---
+# ESTADOS DE LA SPEC
 
-======================================================================Estados de la Spec
+## Estados de la Spec
+
 1. Draft		=> Creada
 2. Prevista		=> Creadas pero no se ha trabajado la implementación
 3. En curso		=> Después del Plan
 4. Publicada		=> Mergeado en el rama Main
 5. Sustituye a NNN	=> Spec que sustituye la funcionalidad de otra Spec
 
-======================================================================
+
+`AGENTS.md` Al final del primer párrafo: * Antes de ejecutar el flujo de `/speckit.specify` agrega:
+
+```md
 ## Spec-kit
-
-
-
-Al final del primer párrafo: * Antes de ejecutar el flujo de `/speckit.specify`
-agrega:
+* Antes de ejecutar el flujo de `/speckit.specify`
+.
+.
+.   
 
 , despues de terminar la spec además cambia en archivo `spec.md` de esta spec => **Status**: Prevista
+```
 
 
 
+Al final del útimo párrafo: * Al ejecutar `/speckit.plan`, agrega:
 
-
-
-Al final del primer párrafo: * Al ejecutar `/speckit.plan`,
-agrega:
+```md
+## Spec-kit
+.
+.
+.
+* Al ejecutar `/speckit.plan`,
+.
+.
+.   
 
 , despues de terminar la spec además cambia en archivo `spec.md` de esta spec => **Status**: En curso
+```
 
+---
+---
 
-
-
-======================================================================Creamos el archivos README.md en la carpeta specs
+Creamos el archivos README.md en la carpeta specs
+```text
 /specs/README.MD
+```
 
-======================================================================En linea de Comandos de CODEX
+En linea de Comandos de CODEX
+
+```sh
 Actualiza la tabla de `specs/README.md` —la fila de esta spec (número, nombre, qué aporta, estado, rama) y, si sustituye o modifica algo de una spec anterior, anótalo en el estado de LAS DOS; revisa todas mis specs porque es la inicialización del fichero `README.md`.
+```
 
-======================================================================specs/README.md Agregar a este archivo al final una lista de las specs que aun no se han realizado pero que se tienen planeado hacer
+`specs/README.md` Agregar a este archivo al final una lista de las specs que aun no se han realizado pero que se tienen planeado hacer
 
+```md
 ## Fuera del alcance acumulado (La lista de "Todavía no")
 - Cuentas de usuario y datos en la nueve (decidido en 001)
 - Importar copia de seguridad / restaurar datos (decidido 003)
 - Modo oscuro (idea para modulo 5 - esperando su momento y su spec)
 
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-
-======================================================================xxxxxxxxxxxxxxxx
-xxzxxx
-
-specify init proyecto1 --integration codex
+```
