@@ -799,3 +799,135 @@ Actualiza la tabla de `specs/README.md` —la fila de esta spec (número, nombre
 - Modo oscuro (idea para modulo 5 - esperando su momento y su spec)
 
 ```
+
+
+---
+---
+---
+---
+# MODIFICAR UNA SPEC YA EXISTENTE
+
+## MODIFICAR PARA MEJORAR LA INTERFACE
+
+
+1. En el Agente enviar el siguiente Prompt pero anexando capturas de pantallas de toda la APP para que de un analisis que utilizar.
+
+> ⚠️ **Advertencia:** 
+> Utilizar un modelo LLM de alto como Sol con esfuerzo en alto
+
+```sh
+Haz de director de arte exigente. Critica esta interfaz y dame las 7 razones concretas por las que NO parece una aplicación de 2026. Sé específico en cada una: tipografía, color, espaciado, jerarquía visual, componentes, estados y densidad. Nada de generalidades: señala elementos exactos de la captura. Aún no propongas soluciones.
+```
+---
+2. Posterior a ese propmt, ejecutar este
+
+> ⚠️ **Advertencia:** 
+> Utilizar un modelo LLM de alto como Sol con esfuerzo en Ultra alto o el último modelo de frontera
+
+```sh
+Proponme 3 direcciones visuales para esta app, claramente distintas entre sí. Cada una en 5 líneas: nombre, dos referencias de productos reales, paleta con códigos de color, tipografía concreta y qué sensación transmite a un cliente que recibe el presupuesto.
+
+No toques código: solo direcciones.
+```
+
+---
+3. Analisando las 3 Opciones que nos ofrece el agente, seleccionar una y enviar el siguiente Pompt dependiendo d ela opción que nos parezca la mas adecuada.
+
+```sh
+Selecciono la opción 3. Crea un documento de pre-especificación para enviarlo a GitHub speckit specification que detalle por completo esta opción. Creo que al menos debería tener las siguientes secciones. Añade alguna adicional si lo consideras oportuno.
+
+## Objetivo
+## Usuarios
+## Dirección visual elegida (decisión de producto: dirección 3)
+## Reglas de diseño (tokens)
+## Criterios de aceptación verificables (sí/no)
+## Fuera de alcance
+```
+---
+4. En una nueva conversación con el agente escribir el siguiente prompt, cambiando los 3 datos:
+    - Archivo spec.md de la spec que queires modificar
+    - El archivo de pre-spec:
+    - El número de la espec que quieres modificar
+
+> ⚠️ **Advertencia:** 
+> Considera usar un modelo LLM de alto de frontera
+
+```sh
+$speckit-specify
+
+Debes reescribir una spec existente: `@specs/002-rediseñar-presentacion/spec.md`, no crees una spec nueva, los criterios de modificación se encuentran eneste documento pre-spec que yo he desarrollado: `@docs/pre-especification-estudio-creativo`. Ajusta la `spec 002` por completo para que refleje todos los cambios de mi documento pre-spec
+```
+
+Al concluir debió de haber modificado el archiov de especificación 002 y creado una rama nueva de Git con estas modificaciones
+
+---
+5. Como esta modificación es muy grande es conveniente eliminar los siguientes archvios:
+    - plan.md
+    - tasks.md
+    - research.md
+    - quickstart.md
+    - data-mpodel.md
+    - /contracts
+    - /checklists/ux.md
+
+> ⚠️ **Advertencia:** 
+> Hay hacemos un commit con los cambios depues de esta eliminación
+
+---
+6. Ahora es momento de ejecutar nuestro Plan.
+
+- Como el cambio es muy grande y necesitamos crear todos lo archivos subsecuentes desde cero ejecutamos el plan así nada mas
+```sh
+$speckit-plan
+```
+
+- Si la modificación fuera algo pequeño y no hubieramos eliminado los otros archivos exsitentes le prodríamos pedir lo siguiente:
+
+```sh
+$speckit-plan
+
+Modifica los archivos existentes del directorio coinforme a los cambios que ha sufrido el archivo de especificación
+```
+
+> ⚠️ **Advertencia:** 
+> Si no hizo el commit al final de esta tarea, Hay que hacer un commit con los cambios
+
+---
+7. Ahora ejecutamos el comando para realizar las Tasks
+
+```sh
+$speckit-tasks
+```
+
+> ⚠️ **Advertencia:** 
+> Si no hizo el commit al final de esta tarea, Hay que hacer un commit con los cambios
+
+---
+8. Ahora ejecutamos el comando para realizar el Analyze
+
+```sh
+$speckit-analyze
+```
+
+> ⚠️ **Advertencia:** 
+> Si no hizo el commit al final de esta tarea, Hay que hacer un commit con los cambios
+
+---
+9. Ahora ejecutamos el comando para realizar la implementación
+
+```sh
+$speckit-implement
+```
+
+---
+10. Si todo es correcto cerramos la feature:
+```sh
+cerrar la feature
+```
+> ⚠️ **Advertencia:** 
+> Si no hizo el commit al final de esta tarea, Hay que hacer un commit con los cambios.
+
+.
+
+> ⚠️ **Advertencia:** 
+> Si no hizo el Merge al final de esta tarea, Hay que hacer un Merge con la rama main
